@@ -7,11 +7,15 @@ else()
     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 endif()
 
-find_package( Boost REQUIRED COMPONENTS regex )
-include_directories( ${Boost_INCLUDE_DIRS} )
+set(Boost_USE_STATIC_LIBS OFF) 
+set(Boost_USE_MULTITHREADED ON)  
+set(Boost_USE_STATIC_RUNTIME OFF) 
+find_package(Boost 1.70.0 COMPONENTS filesystem regex)
 
-# Alternatively you could use ${Boost_LIBRARIES} here.
-# target_link_libraries( run ${Boost_REGEX_LIBRARY} )
+if(Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+    target_link_libraries(timer ${Boost_LIBRARIES})
+endif()
 
 conan_basic_setup()
 
