@@ -10,15 +10,21 @@ endif()
 conan_basic_setup()
 
 add_compile_options(-std=c++11)
-add_executable(timer timer.cpp)
 target_link_libraries(timer ${CONAN_LIBS})
 
-set(Boost_USE_STATIC_LIBS ON) 
-set(Boost_USE_MULTITHREADED ON)  
-set(Boost_USE_STATIC_RUNTIME OFF) 
-find_package(Boost 1.70.0 COMPONENTS regex)
+FIND_PACKAGE( Boost 1.70.0 COMPONENTS regex REQUIRED )
+INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 
-if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-    target_link_libraries(timer ${Boost_LIBRARIES})
-endif()
+TARGET_LINK_LIBRARIES( timer LINK_PUBLIC ${Boost_LIBRARIES} )
+
+add_executable(timer timer.cpp)
+
+#set(Boost_USE_STATIC_LIBS ON) 
+#set(Boost_USE_MULTITHREADED ON)  
+#set(Boost_USE_STATIC_RUNTIME OFF) 
+#find_package(Boost 1.70.0 COMPONENTS regex)
+
+#if(Boost_FOUND)
+#    include_directories(${Boost_INCLUDE_DIRS})
+#    target_link_libraries(timer ${Boost_LIBRARIES})
+#endif()
