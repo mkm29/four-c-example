@@ -7,6 +7,12 @@ else()
     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 endif()
 
+conan_basic_setup()
+
+add_compile_options(-std=c++11)
+add_executable(timer timer.cpp)
+target_link_libraries(timer ${CONAN_LIBS})
+
 set(Boost_USE_STATIC_LIBS OFF) 
 set(Boost_USE_MULTITHREADED ON)  
 set(Boost_USE_STATIC_RUNTIME OFF) 
@@ -16,9 +22,3 @@ if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     target_link_libraries(timer ${Boost_LIBRARIES})
 endif()
-
-conan_basic_setup()
-
-add_compile_options(-std=c++11)
-add_executable(timer timer.cpp)
-target_link_libraries(timer ${CONAN_LIBS})
