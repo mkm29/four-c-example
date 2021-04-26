@@ -13,7 +13,7 @@ add_compile_options(-std=c++11)
 add_executable(timer timer.cpp)
 target_link_libraries(timer ${CONAN_LIBS})
 
-set(Boost_USE_STATIC_LIBS OFF) 
+set(Boost_USE_STATIC_LIBS ON) 
 set(Boost_USE_MULTITHREADED ON)  
 set(Boost_USE_STATIC_RUNTIME OFF) 
 find_package(Boost 1.70.0 COMPONENTS regex)
