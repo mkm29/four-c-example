@@ -1,5 +1,12 @@
 # Example how to build a C++ project using Clang (in Linux, Ubuntu), CMake, CLion and Conan
 
+_Note:_ This is a fork and used as to test the C++ capabilities of Jenkins. Inside of a C++ Jenkins agent you simply need to clone this repo and run the following:
+
+```shell
+chmod +x build.sh
+./build.sh
+```
+
 This project is able to build a C++ app that depends on Poco and Boost libraries.
 It will use Conan to install both libraries and their transitive dependencies.
 
