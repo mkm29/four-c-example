@@ -2,7 +2,9 @@
 
 set -e
 
-mkdir build && cd build
+cd src
+mkdir build
+cd build
 
 conan install .. -s compiler=gcc -s compiler.version=8.3 -s compiler.libcxx=libstdc++11 --build
 cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release \
